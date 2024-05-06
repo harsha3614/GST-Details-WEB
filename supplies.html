@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Supplies</title>
+    <style>
+        /* Styles for Business Supplies page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #ecf0f1; /* Light Gray Background */
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        h1 {
+            color: #3498db; /* Blue Heading */
+            text-align: center;
+        }
+
+        #businessSuppliesForm {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3498db; /* Blue Label Text */
+        }
+
+        input, select, button {
+            width: calc(100% - 22px); /* Adjusted width for better alignment */
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db; /* Blue Background */
+            color: #fff; /* White Text */
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker Blue Background on Hover */
+        }
+
+        #suppliesList {
+            max-width: 600px;
+            margin: auto;
+            background-color: #f2f2f2; /* Light Gray Background */
+            padding: 20px;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .supply-item {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .supply-item span {
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        .delete-button {
+            background-color: #e74c3c; /* Red Background */
+            color: #fff; /* White Text */
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .delete-button:hover {
+            background-color: #c0392b; /* Darker Red Background on Hover */
+        }
+
+        .container-fluid {
+            overflow: hidden;
+        }
+
+        .topnav {
+            background-color: #0092DB;
+            position: relative;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid topnav">
+        <!-- Top Navigation Bar -->
+        <a href="index.php">Home</a>
+        <a href="profile.php">Profile</a>
+        <a href="rules.html">GST Rules</a>
+        <a href="rates.html">GST Rates</a>
+        <a href="act.html">GST Act</a>
+        <a href="expenses.html">Expences</a>
+        <a href="income.php">Income</a>
+        <a href="supplies.html">Supplies</a>
+        <a href="chatpage.php">Discussion Forum</a>
+        <a href="logout.php">Logout</a>
+    </div>
+    
+    <h1>Business Supplies</h1>
+
+    <!-- Form to add business supplies -->
+    <div id="businessSuppliesForm">
+        <label for="supplyName">Supply Name:</label>
+        <input type="text" id="supplyName" placeholder="Enter supply name">
+
+        <label for="supplyQuantity">Quantity:</label>
+        <input type="number" id="supplyQuantity" placeholder="Enter quantity">
+
+        <label for="supplyCost">Cost per Unit:</label>
+        <input type="number" id="supplyCost" placeholder="Enter cost per unit">
+
+        <button onclick="addSupply()">Add Supply</button>
+    </div>
+
+    <!-- List to display business supplies -->
+    <div id="suppliesList">
+        <h2>Business Supplies List</h2>
+        <div id="businessSupplies"></div>
+    </div>
+
+    <script>
+        // JavaScript code for business supplies
+        function addSupply() {
+            var supplyName = document.getElementById('supplyName').value;
+            var supplyQuantity = parseInt(document.getElementById('supplyQuantity').value) || 0;
+            var supplyCost = parseFloat(document.getElementById('supplyCost').value) || 0;
+
+            if (supplyName.trim() === '' || isNaN(supplyQuantity) || supplyQuantity <= 0 || isNaN(supplyCost) || supplyCost <= 0) {
+                alert('Please enter valid details.');
+                return;
+            }
+
+            var supplyItem = document.createElement('div');
+            supplyItem.classList.add('supply-item');
+            supplyItem.innerHTML =
+                '<span>' + supplyName + '</span>' +
+                '<span>Quantity: ' + supplyQuantity + '</span>' +
+                '<span>Cost per Unit: ₹' + supplyCost.toFixed(2) + '</span>' +
+                '<span>Total Cost: ₹' + (supplyQuantity * supplyCost).toFixed(2) + '</span>' +
+                '<button class="delete-button" onclick="deleteSupply(this)">Delete</button>';
+
+            document.getElementById('businessSupplies').appendChild(supplyItem);
+
+            // Clear input fields
+            document.getElementById('supplyName').value = '';
+            document.getElementById('supplyQuantity').value = '';
+            document.getElementById('supplyCost').value = '';
+        }
+
+        function deleteSupply(button) {
+            var supplyItem = button.parentElement;
+            supplyItem.remove();
+        }
+    </script>
+</body>
+
+</html>

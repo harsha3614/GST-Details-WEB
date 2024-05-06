@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Submission</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .left-half {
+            flex: 1;
+            padding: 20px;
+            color: #2c3e50; /* Text color */
+        }
+
+        .left-half h2 {
+            color: #3498db; /* Heading color */
+            margin-bottom: 20px;
+        }
+
+        .left-half ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .left-half li {
+            margin-bottom: 10px;
+        }
+
+        .right-half {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .form-container input {
+            width: calc(100% - 18px); /* Adjusted width to accommodate border */
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-half">
+        <h2>Required Documents</h2>
+        <ul>
+            <li>File: Certificate of Incorporation</li>
+            <li>File: PAN card of Company</li>
+            <li>File: Articles of Association, AOA</li>
+            <li>File: Memorandum of Association, MOA</li>
+            <li>File: Resolution signed by board members</li>
+            <li>File: Identity and address proof of directors</li>
+            <li>File: Digital Signature</li>
+        </ul>
+    </div>
+    <div class="right-half">
+        <div class="form-container">
+            <label for="certificate">Certificate of Incorporation:</label>
+            <input type="file" id="certificate" name="certificate" required>
+
+            <label for="pan">PAN card of Company:</label>
+            <input type="file" id="pan" name="pan" required>
+
+            <label for="aoa">Articles of Association, AOA:</label>
+            <input type="file" id="aoa" name="aoa" required>
+
+            <label for="moa">Memorandum of Association, MOA:</label>
+            <input type="file" id="moa" name="moa" required>
+
+            <label for="resolution">Resolution signed by board members:</label>
+            <input type="file" id="resolution" name="resolution" required>
+
+            <label for="proof">Identity and address proof of directors:</label>
+            <input type="file" id="proof" name="proof" required>
+
+            <label for="signature">Digital Signature:</label>
+            <input type="file" id="signature" name="signature" required>
+
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

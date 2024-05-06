@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Act Web Page</title>
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="news.css" /> 
+		<link rel="stylesheet" href="videos.css" />
+		<link rel="stylesheet" href="main.css" />
+		<script src="https://kit.fontawesome.com/cd21e51899.js" crossorigin="anonymous"></script>
+    
+
+    <!-- Add this line to include Font Awesome -->
+    
+    <style>
+         body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0.5em;
+  }
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+			#header{
+				background: #fff;
+			}
+			#features{
+				background: #d1eaf8f0;
+			}
+			.header a i{
+				color: #000;
+			}
+		
+
+        .pdf-icon {
+            font-size: 50px;
+        }
+          /* Add styles for the top navigation bar
+      .topnav {
+        background-color: #0092DB;
+        overflow: hidden;
+      }
+
+      .topnav a {
+        float: right;
+        display: block;
+        color: white;
+        text-align: auto;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      .topnav a:hover {
+        background-color: #1b9bff;
+        color: white;
+        transition: 0.5s;
+      }
+      .sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #6ba9c6;
+  transition: all .5s ease;
+}
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #063146;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgba(255,255,255,.1);
+  transition: .4s;
+}
+ul li:hover a{
+  padding-left: 50px;
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: absolute;
+  background: #d3dbdf;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #btn{
+  left: 40px;
+  top: 25px;
+  font-size: 35px;
+  color: rgb(255, 255, 255);
+  padding: 6px 12px;
+  transition: all .5s;
+}
+label #cancel{
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  color: #95bfd4;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+} */
+section{
+ background-color: #c0d5df;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: all .5s;
+}
+
+ .topnav {
+            background-color: #0092DB;
+            overflow: hidden;
+        }
+
+        .topnav a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: auto;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #1b9bff;
+            color: white;
+            transition: 0.5s;
+        }
+
+    </style>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <title>gst</title>
+     <link href="css/media_query.css" rel="stylesheet" type="text/css"/>
+     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+     <link href="css/animate.css" rel="stylesheet" type="text/css"/>
+     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+     <link href="css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+     <!-- Bootstrap CSS -->
+     <link href="css/style_1.css" rel="stylesheet" type="text/css"/>
+     <!-- Modernizr JS -->
+     <script src="js/modernizr-3.5.0.min.js"></script>
+</head>
+<body>
+  <body>
+    <div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
+        <!-- Top Navigation Bar -->
+        <div class="topnav">
+          <a href="login.php">Logout</a>
+            <a href="expenses.html">Expences</a>
+            <a href="income.php">Income</a>
+            <a href="supplies.html">Supplies</a>
+            <a href="chatpage.php">Discussion Forum</a>
+            <a href="act.html">GST Act</a>
+            <a href="rates.html">GST Rates</a>
+            <a href="rules.html">GST Rules</a>
+            <a href="profile.php">Profile</a>
+            <a href="index.php">Home</a>
+        </div>
+    </div>
+
+ <!-- <" body class="homepage is-preload"> -->
+    <div id="page-wrapper">
+      <!-- Wrapper -->
+      <div id="wrapper">
+        
+        <!-- Header -->
+       
+<!--           
+        <header class="header" id="header">
+          
+            <h1><a href="#">GST ACTS</a></h1>
+            
+           
+          </header> -->
+          
+        
+        
+    
+
+    <div class="act-container">
+        <h3>CGST ACT</h3>
+        <a href="./CGST-_Amendment_-Act_-2023.html" >
+            <i class="fas fa-file-pdf pdf-icon"></i> Download PDF
+        </a>
+    </div>
+<br>
+    <div class="act-container">
+        <h3>IGST ACT</h3>
+        <a href="./51_GST_Flyer_Chapter21.html" >
+            <i class="fas fa-file-pdf pdf-icon"></i> Download PDF
+        </a>
+    </div>
+<br>
+    <div class="act-container">
+       
+        <h3> UTGST ACT</h3>
+        <a href="./24._UTGST_Act.html">
+            <i class="fas fa-file-pdf pdf-icon"></i> Download PDF
+        </a>
+    </div>
+<br>
+    <div class="act-container">
+        <h3>GST (Compensation to the States) Act</h3>
+        <a href="./a2017-15_1.html" >
+            <i class="fas fa-file-pdf pdf-icon"></i> Download PDF
+        </a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Parallax -->
+<script src="js/jquery.stellar.min.js"></script>
+<!-- Main -->
+<script src="js/main.js"></script>
+<script>if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){$(window).stellar();}</script>
+
+    <!-- Repeat the above code for other GST acts, replacing the appropriate titles and URLs -->
+</body>
+</html>

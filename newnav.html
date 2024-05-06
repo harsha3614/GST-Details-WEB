@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <title>GST Web Page</title>
+    <style>
+        /* Navbar Styles */
+.navbar {
+    background-color: #0092DB;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-item a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-item a:hover {
+    color: #1b9bff;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">GST Web Page</a>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.php">Profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-btn">Goods & Service Tax <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">GST Registration</a>
+                        <a href="#">GST Return Filing</a>
+                        <a href="#">GST LUT Filing</a>
+                        <a href="#">GST Registration Cancellation</a>
+                        <a href="#">GST Annual Return</a>
+                        <a href="#">GST Invoicing</a>
+                        <a href="#">GST eInvoicing</a>
+                        <a href="#">eWay Bill</a>
+                        <a href="#">Input Tax Credit</a>
+                        <a href="#">GST Software for Accountants</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="chatpage.php">Discussion Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a href="expenses.html">Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="income.php">Income</a>
+                </li>
+                <li class="nav-item">
+                    <a href="supplies.html">Supplies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.php">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content goes here -->
+
+    <script src="https://kit.fontawesome.com/cd21e51899.js" crossorigin="anonymous"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

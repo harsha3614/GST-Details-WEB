@@ -1,0 +1,268 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basic Calculator</title>
+        <!-- Bootstrap CSS -->
+        <link href="css/style_1.css" rel="stylesheet" type="text/css"/>
+        <link href="css/media_query.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <link href="css/media_query.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="css/animate.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+        <link href="css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+        <script src="js/modernizr-3.5.0.min.js"></script>
+        
+        <!-- <link rel="stylesheet" href="calc.css"> -->
+    </head>
+    <style>
+        /* Add styles for the top navigation bar */
+        .topnav {
+            background-color: #0092DB;
+            overflow: hidden;
+            margin-bottom: auto;
+        }
+
+        .topnav a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: auto;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #1b9bff;
+            color: white;
+            transition: 0.5s;
+        }
+        body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    .calculator {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+    input,
+    select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    /* select{
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    } */
+    .tax select{
+        margin-bottom: 20px;
+    }
+
+    button {
+        position: relative;
+        align-items: end;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #BFE3F6;
+        color: #000;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #result {
+        margin-right: 5px;
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    /* Add styling for the new paragraphs */
+    #originalAmount, #gst, #taxAmount {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #originalAmount::before, #gst::before, #taxAmount::before {
+        content: "";
+        display: inline-block;
+        width: 50px; /* Adjust the width as needed */
+    }
+
+    </style>
+    <body>
+        <div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
+            <div class="container padding_786">
+                <nav class="navbar navbar-toggleable-md navbar-light ">
+                    <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="img" class="mobile_logo_width"/></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                        <ul class="navbar-nav mr-auto">
+                        
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            
+                            <li class="nav-item ">
+                                <a class="nav-link" href="profile.php">Profile <span class="sr-only">(current)</span></a>
+                            </li>
+                            <!-- <li class="nav-item ">
+                                <a class="nav-link" href="chatpage.php">Discussion Forum <span class="sr-only">(current)</span></a>
+                            </li> -->
+                            <li class="nav-item ">
+                                <a class="nav-link" href="rules.html">GST Rules<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="rates.html">GST Rates<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="act.html">GST Act<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Tools<span class="sr-only">(current)</span></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
+                                    <a class="dropdown-item" href="calc.html">GST Calculator</a>
+                                    <!-- <a class="dropdown-item" href="https://razorpay.com/gst-number-search/09ALEPV3950F1ZU/">GST verification</a> -->
+                                    <a class="dropdown-item" href="chatpage.php">Discussion Forum </a>
+                                    <a class="dropdown-item" href="login.php">Logout </a>
+                                </div>
+                            </li>
+                            <!-- <div class="text-center d-inline-block">
+                        <a href="login.php" class="login-link">Login/</a>
+            <a href="signup.php" class="login-link">Register</a>
+                        </div>  -->
+    </ul>
+
+                </nav>
+            </div>
+        </div>
+    
+    
+    
+        <!-- Top Navigation Bar -->
+    
+            <h1>Basic Calculator</h1>
+            <div class="amount">
+                <h4>Amount</h4>
+                <input type="number" id="amount" placeholder="Enter Amount">
+            </div>
+            <div class="tax">
+                <h4>Tax Slab</h4>
+                <!-- <input  type="number" id="tax" placeholder="Enter Tax Percent"> -->
+                <select type="number" name="tax" id="tax">
+                    <option value="">Select Tax Percentage</option>
+                    <option value="0%">0</option>
+                    <option value="5%">5</option>
+                    <option value="12%">12</option>
+                    <option value="18%">18</option>
+                    <option value="28%">28</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button id="calculate">Calculate</button>
+                <button id="clear">Clear All</button> 
+            </div>
+            <div class="after">
+                <p id="result" style="display: none;"></p>
+                <p id="gst" style="display: none;">GST: </p>
+                <p id="taxAmount" style="display: none;">Tax Amount: </p>
+                <p id="originalAmount" style="display: none;">Original Amount: </p>
+            </div>
+            
+            
+            
+            <!-- <button id="calculate">Calculate</button>
+            <button id="clear">Clear All</button> -->
+            <!-- <p id="result" style="display: none;"></p>
+            <p id="gst" style="display: none;">GST: </p>
+            <p id="taxAmount" style="display: none;">Tax Amount: </p>
+            <p id="originalAmount" style="display: none;">Original Amount: </p> -->
+        </div>
+        <script>
+            document.getElementById('calculate').addEventListener('click', function() {
+                const amount = parseFloat(document.getElementById('amount').value);
+                const tax = parseFloat(document.getElementById('tax').value);
+
+                if (isNaN(amount) || isNaN(tax)) {
+                    alert('Please enter valid numbers.');
+                    return;
+                }
+
+                const gst = (amount * (tax / 100));
+                const result = amount + gst;
+
+                // Display the hidden elements
+                document.getElementById('originalAmount').style.display = 'block';
+                document.getElementById('gst').style.display = 'block';
+                document.getElementById('taxAmount').style.display = 'block';
+                document.getElementById('result').style.display = 'block';
+
+                document.getElementById('originalAmount').textContent = `Original Amount: ${amount.toFixed(2)}`;
+                document.getElementById('gst').textContent = `GST: ${tax.toFixed(2)}%`;
+                document.getElementById('taxAmount').textContent = `Tax Amount: ${gst.toFixed(2)}`;
+                document.getElementById('result').textContent = `Total Amount: ${result.toFixed(2)}`;
+            });
+
+            document.getElementById('clear').addEventListener('click', function() {
+                // Hide the elements when clearing
+                document.getElementById('originalAmount').style.display = 'none';
+                document.getElementById('gst').style.display = 'none';
+                document.getElementById('taxAmount').style.display = 'none';
+                document.getElementById('result').style.display = 'none';
+
+                document.getElementById('amount').value = '';
+                document.getElementById('tax').value = '';
+                document.getElementById('result').textContent = '';
+                document.getElementById('gst').textContent = 'GST: ';
+                document.getElementById('taxAmount').textContent = 'Tax Amount: ';
+                document.getElementById('originalAmount').textContent = 'Original Amount: ';
+            });
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
+    </body>
+    </html>

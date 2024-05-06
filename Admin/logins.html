@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #f4f4f4;
+            background-image: url('your-background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-cards {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .login-card {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .login-card:hover {
+            transform: scale(1.05);
+        }
+
+        .login-card i {
+            font-size: 50px;
+            color: #5B86E5;
+        }
+
+        .login-card h3 {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .login-card button {
+            background-color: #36D1DC;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-card button:hover {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-cards">
+        <!-- Admin Login Card -->
+        <div class="login-card">
+            <i class="fas fa-user-tie"></i>
+            <h3 style="color: #5B86E5;">Admin Login</h3>
+            <button style="background-color: #4CAF50;" onclick="location.href='adminlogin.html'">Login</button>
+        </div>
+
+        <!-- Enterprises Login Card -->
+        <div class="login-card">
+            <i class="fas fa-building"></i>
+            <h3 style="color: #5B86E5;">Enterprises Login</h3>
+            <button style="background-color: #E74C3C;" onclick="location.href='../Enterprises/login.php'">Login</button>
+        </div>
+
+      
+        <div class="login-card">
+            <i class="fas fa-user-tie"></i>
+            <h3 style="color: #5B86E5;">Auditor Login</h3>
+            <button style="background-color: #FFA500;" onclick="location.href='auditor-login.html'">Login</button>
+        </div> 
+
+        <!-- User Login Card -->
+        <div class="login-card">
+            <i class="fas fa-user"></i>
+            <h3 style="color: #5B86E5;">User Login</h3>
+            <button style="background-color: #3498DB;" onclick="location.href='../login.php'">Login</button>
+        </div>
+    </div>
+</body>
+</html>

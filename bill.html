@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Billing Software</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #billing-container {
+            width: 60%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .customer-details {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .item-input, .gst-input {
+            width: calc(80% - 16px);
+            padding: 8px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+
+        .item-preview {
+            margin-top: 20px;
+        }
+
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .preview-table, .preview-th, .preview-td {
+            border: 1px solid #ddd;
+        }
+
+        .preview-th, .preview-td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        button {
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>GST Billing Software</h1>
+</header>
+
+<div id="billing-container">
+    <div class="customer-details">
+        <h2>Customer Details</h2>
+        <label for="customerName">Name:</label>
+        <input type="text" id="customerName" class="item-input" placeholder="Customer Name">
+        <label for="customerAddress">Address:</label>
+        <input type="text" id="customerAddress" class="item-input" placeholder="Customer Address">
+    </div>
+
+    <div>
+        <label for="gstRate">GST Rate:</label>
+        <select id="gstRate" class="gst-input">
+            <option value="5">5%</option>
+            <option value="12">12%</option>
+            <option value="18">18%</option>
+            <option value="28">28%</option>
+        </select>
+        <button onclick="applyGlobalGST()">Apply Global GST</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>GST Rate</th>
+                <th>Total</th>
+                <th>GST Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="billing-table-body">
+            <!-- Dynamically populated table rows will go here -->
+        </tbody>
+        <tfoot>
+            <tr class="total-row">
+                <td colspan="4">Total</td>
+                <td id="total-amount">0.00</td>
+                <td id="total-gst">0.00</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="item-preview">
+        <h2>Item Preview</h2>
+        <table class="preview-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Total</th>
+                    <th>GST Amount</th>
+                </tr>
+            </thead>
+            <tbody id="preview-table-body">
+                <!-- Dynamically populated preview table rows will go here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <button onclick="addItem()">Add Item</button>
+        <button onclick="calculateTotal()">Calculate Total</button>
+        <button onclick="clearItems()">Clear Items</button>
+        <button onclick="printBill()">Print Bill</button>
+    </div>
+</div>
+
+<script>
+    var globalGSTRate = 0;
+
+    function addItem() {
+        var tableBody = document.getElementById('billing-table-body');
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+        
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        var cell7 = newRow.insertCell(6);
+
+        cell1.innerHTML = '<input type="text" class="item-input" placeholder="Item">';
+        cell2.innerHTML = '<input type="number" class="item-input" placeholder="Quantity">';
+        cell3.innerHTML = '<input type="number" class="item-input" placeholder="Rate">';
+        cell4.innerHTML = '<select class="gst-input">' +
+                            '<option value="5">5%</option>' +
+                            '<option value="12">12%</option>' +
+                            '<option value="18">18%</option>' +
+                            '<option value="28">28%</option>' +
+                            '</select>';
+        cell5.innerHTML = '<input type="text" class="item-input" readonly>';
+        cell6.innerHTML = '<input type="text" class="item-input" readonly>';
+        cell7.innerHTML = '<button onclick="removeItem(this)">Remove</button>';
+    }
+
+    function calculateTotal() {
+        var table = document.getElementById('billing-table-body');
+        var previewTable = document.getElementById('preview-table-body');
+        var rows = table.getElementsByTagName('tr');
+        var totalAmount = 0;
+        var totalGST = 0;
+
+        // Clear previous preview table
+        previewTable.innerHTML = '';
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var previewRow = previewTable.insertRow(previewTable.rows.length);
+            var previewCell1 = previewRow.insertCell(0);
+            var previewCell2 = previewRow.insertCell(1);
+            var previewCell3 = previewRow.insertCell(2);
+            var previewCell4 = previewRow.insertCell(3);
+            var previewCell5 = previewRow.insertCell(4);
+
+            var quantity = cells[1].querySelector('input').value;
+            var rate = cells[2].querySelector('input').value;
+            var gstRate = cells[3].querySelector('select').value;
+            var total = quantity * rate;
+            var gstAmount = (total * gstRate) / 100;
+
+            if (!isNaN(total)) {
+                totalAmount += total;
+                totalGST += gstAmount;
+
+                cells[4].querySelector('input').value = total.toFixed(2);
+                cells[5].querySelector('input').value = gstAmount.toFixed(2);
+
+                previewCell1.textContent = cells[0].querySelector('input').value;
+                previewCell2.textContent = quantity;
+                previewCell3.textContent = rate;
+                previewCell4.textContent = total.toFixed(2);
+                previewCell5.textContent = gstAmount.toFixed(2);
+            }
+        }
+
+        document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+        document.getElementById('total-gst').textContent = totalGST.toFixed(2);
+    }
+
+    function removeItem(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        calculateTotal();
+    }
+
+    function clearItems() {
+        var table = document.getElementById('billing-table-body');
+        table.innerHTML = '';
+        calculateTotal();
+    }
+
+    function applyGlobalGST() {
+        globalGSTRate = document.getElementById('gstRate').value;
+        var gstInputs = document.querySelectorAll('.gst-input');
+        gstInputs.forEach(function (input) {
+            input.value = globalGSTRate;
+        });
+        calculateTotal();
+    }
+
+    function printBill() {
+        var customerName = document.getElementById('customerName').value;
+        var customerAddress = document.getElementById('customerAddress').value;
+        var totalAmount = document.getElementById('total-amount').textContent;
+        var totalGST = document.getElementById('total-gst').textContent;
+
+        var billContent = `
+            Customer Name: ${customerName}
+            Customer Address: ${customerAddress}
+
+            Item Details:
+            `;
+
+        var table = document.getElementById('preview-table-body');
+        var rows = table.getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            billContent += `
+                Item: ${cells[0].textContent}
+                Quantity: ${cells[1].textContent}
+                Rate: ${cells[2].textContent}
+                Total: ${cells[3].textContent}
+                GST Amount: ${cells[4].textContent}
+
+                `;
+        }
+
+        billContent += `
+            Total Amount: ${totalAmount}
+            Total GST: ${totalGST}
+        `;
+
+        alert(billContent);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiaFilings - GST Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="landing-styles.css">
+    <style>
+        /* General styles for elements */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Service section styles */
+.services {
+    padding: 40px 0;
+}
+
+.services h2 {
+    margin-bottom: 20px;
+}
+
+.service {
+    margin-bottom: 30px;
+}
+
+.service h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Details section styles */
+.details {
+    display: none;
+}
+
+.details h2 {
+    margin-bottom: 20px;
+}
+
+.details h3 {
+    margin-bottom: 10px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>IndiaFilings</h1>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="services" class="services">
+        <div class="container">
+            <h2>GST Services</h2>
+            <div class="service">
+                <h3>Registration</h3>
+                <p>Get assistance for GST registration with 1 year LEDGERS Accounting software license for Invoicing, GST E-invoicing and GST filing through LEDGERS.</p>
+                <button class="details-btn" data-service="registration">View Details</button>
+            </div>
+            <div class="service">
+                <h3>Return Filing</h3>
+                <p>Efficiently file your GSTR-3B and GSTR-1 returns with expert assistance.</p>
+                <button class="details-btn" data-service="return-filing">View Details</button>
+            </div>
+        </div>
+    </section>
+    <section id="details" class="details">
+        <div class="container">
+            <h2>Service Details</h2>
+            <div id="service-details"></div>
+            <h3>Documents Required</h3>
+            <ul id="documents-list"></ul>
+        </div>
+    </section>
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p>&copy; 2024 IndiaFilings. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const serviceButtons = document.querySelectorAll(".details-btn");
+
+    serviceButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const service = this.getAttribute("data-service");
+            showServiceDetails(service);
+        });
+    });
+
+    function showServiceDetails(service) {
+        const detailsSection = document.getElementById("details");
+        const serviceDetailsDiv = document.getElementById("service-details");
+        const documentsList = document.getElementById("documents-list");
+
+        // Clear previous details
+        serviceDetailsDiv.innerHTML = "";
+        documentsList.innerHTML = "";
+
+        // Fetch and display service details and documents
+        if (service === "registration") {
+            serviceDetailsDiv.innerHTML = `
+                <p>Get assistance for GST registration with 1 year LEDGERS Accounting software license for Invoicing, GST E-invoicing and GST filing through LEDGERS.</p>
+            `;
+            documentsList.innerHTML = `
+                <li>Electricity Bill</li>
+                <li>Telephone Bill</li>
+                <li>Property Tax Receipt</li>
+            `;
+        } else if (service === "return-filing") {
+            serviceDetailsDiv.innerHTML = `
+                <p>Efficiently file your GSTR-3B and GSTR-1 returns with expert assistance.</p>
+            `;
+            documentsList.innerHTML = `
+                <li>GSTIN</li>
+                <li>Sales and Purchase Invoices</li>
+                <li>Bank Statements</li>
+            `;
+        }
+
+        // Show details section
+        detailsSection.style.display = "block";
+        detailsSection.scrollIntoView({ behavior: "smooth" });
+    }
+});
+
+    </script>
+</body>
+</html>

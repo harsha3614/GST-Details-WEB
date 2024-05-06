@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Web Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa; /* Light gray background */
+      color: #333; /* Dark gray text color */
+    }
+
+    header {
+      text-align: center;
+      background: #4CAF50; /* Green header background */
+      padding: 20px 0;
+      border-radius: 0 0 50px 50px;
+      margin-bottom: 50px;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header h1, header p {
+      color: #fff;
+      margin: 0;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #64B5F6, #2196F3); /* Blue gradient navbar background */
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a i {
+      margin-right: 5px;
+    }
+
+    .navbar a:hover {
+      background-color: #1976D2; /* Darker blue on hover */
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .content {
+      width: 45%;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #E0E0E0; /* Light gray content background */
+      animation: fadeInLeft 1s ease;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .content:nth-child(even) {
+      animation-name: fadeInRight; /* Alternating animation for even content */
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .info-section h2 {
+      color: #009688; /* Teal section title color */
+      margin-top: 0;
+    }
+
+    .info-section p {
+      margin-bottom: 10px;
+    }
+
+    .gst-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .content {
+        width: 100%;
+      }
+      .navbar {
+        padding: 5px 0;
+      }
+      .navbar a {
+        padding: 10px 15px;
+        margin: 5px 0;
+      }
+    }
+
+    .content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="#"><i class="fas fa-user-tie"></i>Admin</a>
+    <a href="#"><i class="fas fa-building"></i>Enterprise</a>
+    <a href="#"><i class="fas fa-user-secret"></i>Auditor</a>
+    <a href="#"><i class="fas fa-user"></i>User</a>
+  </div>
+
+  <header>
+    <h1>Welcome to GST Web Application</h1>
+    <p>Manage your GST-related tasks efficiently with our intuitive web application.</p>
+  </header>
+
+  <div class="container">
+    <div class="content">
+      <section class="info-section">
+        <h2>What is GST?</h2>
+        <p>GST is an indirect tax levied on the supply of goods and services in India. It has replaced many indirect taxes previously levied by the central and state governments.</p>
+        <p>Our GST web application simplifies GST compliance, invoicing, and reporting for businesses of all sizes.</p>
+      </section>
+      <section class="info-section">
+        <h2>Key Features</h2>
+        <ul>
+          <li>User-friendly interface</li>
+          <li>Real-time invoicing</li>
+          <li>Automatic tax calculations</li>
+          <li>Comprehensive reporting</li>
+          <li>Multi-user support</li>
+        </ul>
+      </section>
+    </div>
+    <div class="content">
+      <section class="info-section">
+        <h2>Why Choose Us?</h2>
+        <p>We offer a seamless and efficient solution for managing your GST requirements. Our platform is designed to save you time and effort, allowing you to focus on your core business activities.</p>
+      </section>
+      <img src="https://media.giphy.com/media/LZ3OvrS4LVENM/giphy.gif" alt="GST Logo" class="gst-image">
+    </div>
+  </div>
+</body>
+</html>

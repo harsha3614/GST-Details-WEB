@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Filing - GSTPro</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .nav__toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .nav__menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav__item {
+            margin-right: 20px;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover {
+            color: #ffc107;
+        }
+
+        /* Main Styles */
+        .main {
+            padding-top: 120px;
+        }
+
+        .gst-filing {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .section__title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #0056b3;
+        }
+
+        .gst-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0056b3;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="date"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00408f;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #0056b3;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .nav__menu {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #0056b3;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 998;
+            }
+
+            .nav__toggle {
+                display: block;
+            }
+
+            .nav__item {
+                margin: 10px 0;
+            }
+
+            .nav__link {
+                color: #fff;
+            }
+
+            .nav__link:hover {
+                color: #ffc107;
+            }
+
+            .main {
+                padding-top: 150px;
+            }
+
+            .footer {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="#" class="nav__logo">GSTPro</a>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line"></i>
+        </div>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Services</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main class="main">
+    <section class="gst-filing">
+        <div class="container">
+            <h2 class="section__title">GST Filing</h2>
+            <div class="gst-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="gst-number">GSTIN:</label>
+                        <input type="text" id="gst-number" name="gst-number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice-number">Invoice Number:</label>
+                        <input type="text" id="invoice-number" name="invoice-number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" id="due-date" name="due-date" required>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 GSTPro. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+   
+    });
+
+// Smooth scrolling for navigation links
+const navLinks = document.querySelectorAll('.nav__link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+        });
+    });
+});
+</script>
+</body>
+</html>

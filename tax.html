@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Transactions</title>
+    <style>
+        /* Styles for Tax Transactions page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #ecf0f1; /* Light Gray Background */
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        h1 {
+            color: #3498db; /* Blue Heading */
+            text-align: center;
+        }
+
+        #taxForm {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #3498db; /* Blue Heading */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3498db; /* Blue Label Text */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db; /* Blue Background */
+            color: #fff; /* White Text */
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker Blue Background on Hover */
+        }
+
+        #taxTransactionsList {
+            max-width: 800px;
+            margin: auto;
+            background-color: #f2f2f2; /* Light Gray Background */
+            padding: 20px;
+            border: 1px solid #bdc3c7; /* Light Gray Border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .transaction-item {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .transaction-item span {
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        .delete-icon {
+            color: #e74c3c; /* Red Color for Delete Icon */
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tax Transactions</h1>
+
+    <!-- Form to add new tax transaction -->
+    <div id="taxForm">
+        <h2>Add New Tax Transaction</h2>
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="Enter description">
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+
+        <button onclick="addTransaction()">Add Transaction</button>
+    </div>
+
+    <!-- List to display tax transactions -->
+    <div id="taxTransactionsList">
+        <h2>Tax Transactions List</h2>
+        <div id="taxTransactions"></div>
+    </div>
+
+    <script>
+        // JavaScript code for tax transactions
+        // Assume you have a function to load tax transactions from your data source
+        function loadTaxTransactions() {
+            // Sample tax transactions data
+            var transactionsData = [
+                { description: 'Income Tax', amount: 500, date: '2023-01-15' },
+                { description: 'Sales Tax', amount: 200, date: '2023-01-20' },
+                { description: 'Property Tax', amount: 100, date: '2023-02-05' },
+                // Add more transactions as needed
+            ];
+
+            var transactionsContainer = document.getElementById('taxTransactions');
+
+            transactionsData.forEach(function (transaction) {
+                var transactionItem = document.createElement('div');
+                transactionItem.classList.add('transaction-item');
+                transactionItem.innerHTML =
+                    '<span>' + transaction.description + '</span>' +
+                    '<span>Amount: ₹' + transaction.amount.toFixed(2) + '</span>' +
+                    '<span>Date: ' + transaction.date + '</span>' +
+                    '<span class="delete-icon" onclick="deleteTransaction(this)">&#10006;</span>';
+
+                transactionsContainer.appendChild(transactionItem);
+            });
+        }
+
+        // Function to add a new tax transaction
+        function addTransaction() {
+            var description = document.getElementById('description').value;
+            var amount = parseFloat(document.getElementById('amount').value) || 0;
+
+            if (description.trim() === '' || isNaN(amount) || amount <= 0) {
+                alert('Please enter valid details.');
+                return;
+            }
+
+            var transactionItem = document.createElement('div');
+            transactionItem.classList.add('transaction-item');
+            transactionItem.innerHTML =
+                '<span>' + description + '</span>' +
+                '<span>Amount: ₹' + amount.toFixed(2) + '</span>' +
+                '<span>Date: ' + getCurrentDate() + '</span>' +
+                '<span class="delete-icon" onclick="deleteTransaction(this)">&#10006;</span>';
+
+            document.getElementById('taxTransactions').appendChild(transactionItem);
+
+            // Clear input fields
+            document.getElementById('description').value = '';
+            document.getElementById('amount').value = '';
+        }
+
+        // Function to delete a tax transaction
+        function deleteTransaction(icon) {
+            var transactionItem = icon.parentElement;
+            transactionItem.remove();
+        }
+
+        // Function to get the current date in 'YYYY-MM-DD' format
+        function getCurrentDate() {
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = (today.getMonth() + 1).toString().padStart(2, '0');
+            var day = today.getDate().toString().padStart(2, '0');
+            return year + '-' + month + '-' + day;
+        }
+
+        // Load tax transactions when the page is loaded
+        window.onload = function () {
+            loadTaxTransactions();
+        };
+    </script>
+</body>
+
+</html>

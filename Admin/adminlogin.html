@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Web Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa; /* Light gray background */
+      color: #333; /* Dark gray text color */
+    }
+
+    header {
+      text-align: center;
+      background: #3498db; /* Blue header background */
+      padding: 20px 0;
+      border-radius: 0 0 50px 50px;
+      margin-bottom: 50px;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header h1, header p {
+      color: #fff;
+      margin: 0;
+    }
+
+    .navbar {
+      background: #2c3e50; /* Darker blue navbar background */
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      animation: slideInDown 1s ease;
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 15px;
+      border-radius: 5px;
+      margin: 0 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #34495e; /* Darker blue on hover */
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .content {
+      width: 45%;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #ecf0f1; /* Light blue-gray content background */
+      animation: fadeInLeft 1s ease;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .content:nth-child(even) {
+      animation-name: fadeInRight; /* Alternating animation for even content */
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .info-section h2 {
+      color: #27ae60; /* Green section title color */
+      margin-top: 0;
+    }
+
+    .info-section p {
+      margin-bottom: 10px;
+    }
+
+    .gst-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease;
+    }
+
+    .login-card {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff; /* Card background color */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease;
+    }
+
+    .login-card i {
+      font-size: 50px;
+      color: #e67e22; /* Icon color */
+    }
+
+    .login-card h3 {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .login-card form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-card label {
+      text-align: left;
+      margin-bottom: 5px;
+      color: #666;
+    }
+
+    .login-card input {
+      padding: 8px;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .login-card button {
+      background-color: #3498db; /* Button color */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-card button:hover {
+      background-color: #2980b9; /* Button hover color */
+    }
+
+    .login-card p {
+      margin-top: 15px;
+      color: #666;
+    }
+
+    .login-card a {
+      color: #e67e22; /* Link color */
+      text-decoration: none;
+    }
+
+    .login-card a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .content {
+        width: 100%;
+      }
+      .navbar {
+        padding: 5px 0;
+      }
+      .navbar a {
+        padding: 5px 10px;
+      }
+    }
+
+    .content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-login-animation {
+      animation: moveDown 1s ease;
+    }
+
+    @keyframes moveDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to GST Web Application</h1>
+    <p>Manage your GST-related tasks efficiently with our intuitive web application.</p>
+  </header>
+  
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="#" onclick="showLoginForm('admin')">Admin Login</a>
+    <a href="#" onclick="showLoginForm('enterprise')">Enterprise Login</a>
+    <a href="#" onclick="showLoginForm('auditor')">Auditor Login</a>
+    <a href="#" onclick="showLoginForm('user')">User Login</a>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <section class="info-section">
+        <h2>What is GST?</h2>
+        <p>GST is an indirect tax levied on the supply of goods and services in India. It has replaced many indirect taxes previously levied by the central and state governments.</p>
+        <p>Our GST web application simplifies GST compliance, invoicing, and reporting for businesses of all sizes.</p>
+      </section>
+      <section class="info-section">
+        <h2>Key Features</h2>
+        <ul>
+          <li>User-friendly interface</li>
+          <li>Real-time invoicing</li>
+          <li>Automatic tax calculations</li>
+          <li>Comprehensive reporting</li>
+          <li>Multi-user support</li>
+        </ul>
+      </section>
+    </div>
+    <div id="admin-login" class="content" style="display: none;">
+      <div class="admin-login-animation">
+        <div class="login-card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Admin Login</h3>
+          <form method="POST" action="admin-login.php">
+            <label for="admin-username">Username:</label>
+            <input type="text" id="admin-username" name="admin-username" required>
+    
+            <label for="admin-password">Password:</label>
+            <input type="password" id="admin-password" name="admin-password" required>
+    
+            <button type="submit">Login</button>
+          </form>
+          <p>Forgot your password? <a href="#" style="color: #e67e22;">Reset here</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <section class="info-section">
+        <h2>Why Choose Us?</h2>
+        <p>We offer a seamless and efficient solution for managing your GST requirements. Our platform is designed to save you time and effort, allowing you to focus on your core business activities.</p>
+      </section>
+      <img src="https://media.giphy.com/media/LZ3OvrS4LVENM/giphy.gif" alt="GST Logo" class="gst-image">
+    </div>
+  </div>
+
+  <script>
+    function showLoginForm(loginType) {
+      if (loginType === 'admin') {
+        document.getElementById('admin-login').style.display = 'block';
+        document.getElementById('admin-login').classList.add('admin-login-animation');
+      }
+    }
+  </script>
+</body>
+</html>
